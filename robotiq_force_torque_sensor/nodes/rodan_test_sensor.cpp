@@ -64,7 +64,11 @@ void renormCallback(const std_msgs::BoolConstPtr& msg)
 {
   std::cout<<"heard renorm msg: "<<*msg<<std::endl;
   robotiq_force_torque_sensor::sensor_accessor srv;
-  srv.request.command = "SET ZRO";
+		/// Deprecated Interface
+		// srv.request.command = "SET ZRO";
+
+		/// New Interface with numerical commands
+		srv.request.command_id = srv.request.COMMAND_SET_ZERO;
 	if(client.call(srv)){
 		ROS_INFO("renorm ret: %s", srv.response.res.c_str());
 	}
@@ -93,7 +97,12 @@ int main(int argc, char **argv)
 	{
 	if(count == 10000000){
     //call once on initialization
-		srv.request.command = "SET ZRO";
+		/// Deprecated Interface
+		// srv.request.command = "SET ZRO";
+
+		/// New Interface with numerical commands
+		srv.request.command_id = srv.request.COMMAND_SET_ZERO;
+
 		if(client.call(srv)){
 			ROS_INFO("renorm ret: %s", srv.response.res.c_str());
 		}

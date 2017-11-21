@@ -55,10 +55,10 @@ add_dependencies(rq_test_sensor ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_gencf
 target_link_libraries(rq_test_sensor ${catkin_LIBRARIES})
 
 add_executable(rodan_test_sensor nodes/rodan_test_sensor.cpp)
-add_dependencies(rodan_test_sensor ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_gencpp)
+add_dependencies(rodan_test_sensor ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_gencfg ${PROJECT_NAME}_gencpp)
 target_link_libraries(rodan_test_sensor ${catkin_LIBRARIES})
 
-install(TARGETS rq_sensor rq_test_sensor
+install(TARGETS rq_sensor rq_test_sensor rodan_test_sensor
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
