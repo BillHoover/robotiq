@@ -88,7 +88,7 @@ int main(int argc, char **argv)
 	client = n.serviceClient<robotiq_force_torque_sensor::sensor_accessor>("robotiq_force_torque_sensor_acc");
 	ros::Subscriber sub1 = n.subscribe("robotiq_force_torque_sensor",100,reCallback);
 
-  ros::Subscriber sub_click = n.subscribe("/renorm_force_sensor", 1, renormCallback);
+  ros::Subscriber sub_click = n.subscribe("renorm_force_sensor", 1, renormCallback);
 
 	robotiq_force_torque_sensor::sensor_accessor srv;
 
