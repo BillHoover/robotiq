@@ -92,10 +92,13 @@ int main(int argc, char **argv)
 
 	robotiq_force_torque_sensor::sensor_accessor srv;
 
+  float rate_hz = 10.0;
+  ros::Rate r(rate_hz); // 10 hz
 	int count = 0;
+  int renorm_t = 5;
 	while (ros::ok())
 	{
-	if(count == 10000000){
+	if(count == int(rate_hz*renorm_t) ){
     //call once on initialization
 		/// Deprecated Interface
 		// srv.request.command = "SET ZRO";
@@ -111,6 +114,7 @@ int main(int argc, char **argv)
 
 		ros::spinOnce();
 
+    r.sleep();
 		++count;
 	}
 
